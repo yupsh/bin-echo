@@ -74,8 +74,16 @@ func newCommand(version string, stdout io.Writer) *cli.Command {
 		ExitErrHandler: func(context.Context, *cli.Command, error) {},
 		Flags: []cli.Flag{
 			&cli.BoolFlag{Name: flagNoNewline, Aliases: []string{"n"}, Usage: "do not output the trailing newline"},
-			&cli.BoolFlag{Name: flagEscapes, Aliases: []string{"e"}, Usage: "enable interpretation of backslash escapes"},
-			&cli.BoolFlag{Name: flagNoEscapes, Aliases: []string{"E"}, Usage: "disable interpretation of backslash escapes (default)"},
+			&cli.BoolFlag{
+				Name:    flagEscapes,
+				Aliases: []string{"e"},
+				Usage:   "enable interpretation of backslash escapes",
+			},
+			&cli.BoolFlag{
+				Name:    flagNoEscapes,
+				Aliases: []string{"E"},
+				Usage:   "disable interpretation of backslash escapes (default)",
+			},
 		},
 		Action: action(stdout),
 	}
